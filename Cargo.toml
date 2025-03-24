@@ -3,13 +3,11 @@ resolver = "2"
 members = [
     "crates/*",
     "examples/*",
-    # NOTE: need to add dora examples to make rust analyzer to work
     "examples/dora/video-capture",
     "examples/dora/imgproc",
     "examples/dora/video-sink",
     "examples/dora/image-utils",
     "kornia-viz",
-    # "kornia-py",
 ]
 exclude = ["kornia-py", "examples/dora"]
 
@@ -40,6 +38,9 @@ kornia = { path = "crates/kornia", version = "0.1.9-rc.2" }
 kornia-linalg = { path = "crates/kornia-linalg", version = "0.1.9-rc.2" }
 kernels = { path = "crates/kernels", version = "0.1.9-rc.2" }
 
+arrow-arith = { version = "=53.3.0", features = [] }
+chrono = { version = "=0.4.39", default-features = false }
+
 # dev dependencies for workspace
 argh = "0.1"
 approx = "0.5"
@@ -54,12 +55,3 @@ rerun = "^0.22"
 serde = { version = "1", features = ["derive"] }
 tempfile = "3.10"
 thiserror = "2"
-
-# Precise versions to fix compatibility issues between arrow-arith and chrono
-arrow-arith = { version = "53.3.0", features = [] }
-chrono = { version = "0.4.39", default-features = false }
-
-[patch.crates-io]
-# Ensure consistent versions throughout the dependency tree
-arrow-arith = { version = "53.3.0" }
-chrono = { version = "0.4.39" }
