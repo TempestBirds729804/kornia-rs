@@ -54,3 +54,12 @@ rerun = "^0.22"
 serde = { version = "1", features = ["derive"] }
 tempfile = "3.10"
 thiserror = "2"
+
+# Precise versions to fix compatibility issues between arrow-arith and chrono
+arrow-arith = { version = "53.3.0", features = [] }
+chrono = { version = "0.4.39", default-features = false }
+
+[patch.crates-io]
+# Ensure consistent versions throughout the dependency tree
+arrow-arith = { version = "53.3.0" }
+chrono = { version = "0.4.39" }
